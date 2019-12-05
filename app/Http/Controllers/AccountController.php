@@ -177,7 +177,7 @@ class AccountController extends Controller
 
         $amount = $request->amount;
 
-        $to_account = Account::where('account_number', $request->to_account)->first();
+        $to_account = Account::where('account_number', $request->to_account)->orWhere('account_number', $request->account_number)->first();
 
         if ($to_account) {
             $narration = "Transfer to " . $to_account->user->name . " with account number $request->to_account" . $request->narration;
