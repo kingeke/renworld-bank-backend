@@ -195,7 +195,8 @@ class AccountTest extends TestCase
             'to_account' => 'others',
             'bank_name' => 'Access Bank',
             'account_name' => $this->faker->name,
-            'narration' => $this->faker->sentence
+            'narration' => $this->faker->sentence,
+            'account_number' => '2099312312'
         ]);
 
         $this->actingAs($user, 'users')->post("/api/account/", $data)->assertJson([

@@ -37,7 +37,7 @@ class TransactionsTest extends TestCase
 
         $this->actingAs($user, 'users')->get('/api/transactions')->assertJson([
             'status' => 'success',
-            'transactions' => $account->transactions()->latest()->paginate(20, ['*'], 'transactions')->toArray()
+            'transactions' => $account->transactions()->latest()->paginate(20)->toArray()
         ])->assertStatus(200);
     }
 
