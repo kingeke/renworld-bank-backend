@@ -21,7 +21,7 @@ Clone the repository
 
     git clone https://github.com/kingeke/renworld-bank-backend
 
-Clone the frontend repository and read the documentation there
+Clone the frontend repository and read the documentation there [frontend](https://github.com/kingeke/renworld-bank-frontend)
 
     git clone https://github.com/kingeke/renworld-bank-frontend
 
