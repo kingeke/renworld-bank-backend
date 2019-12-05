@@ -180,7 +180,7 @@ class AccountController extends Controller
         $to_account = Account::where('account_number', $request->to_account)->orWhere('account_number', $request->account_number)->first();
 
         if ($to_account) {
-            $narration = "Transfer to " . $to_account->user->name . " with account number $request->to_account" . $request->narration;
+            $narration = "Transfer to " . $to_account->user->name . " with account number $to_account->account_number" . $request->narration;
 
             $to_account->user->credit_account($to_account, [
                 'narration' => "Transfer from $user->name with account number $request->from_account",
