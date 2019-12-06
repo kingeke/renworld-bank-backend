@@ -31,7 +31,7 @@ class DashboardController extends Controller
         $transactions = $user->transactions()->latest()->with('account')->count();
         $accounts = $user->accounts()->count();
         $balance = $user->accounts()->sum('balance');
-        $recent_transactions = $user->transactions()->latest()->with('account')->take(15)->get();
+        $recent_transactions = $user->transactions()->orderBy('created_at', 'desc')->orderBy('id', 'desc')->with('account')->take(15)->get();
 
         return response()->json([
             'status' => 'success',

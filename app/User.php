@@ -96,6 +96,8 @@ class User extends Authenticatable implements JWTSubject
      */
     public function update_account(Account $account, $data)
     {
+        $account = $account->refresh();
+
         $previous_balance = $account->balance;
 
         $account->update(['balance' => ($data['type'] == 'Debit' ? $previous_balance - $data['amount'] : $previous_balance + $data['amount'])]);

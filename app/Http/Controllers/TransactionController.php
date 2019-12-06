@@ -55,7 +55,7 @@ class TransactionController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'transactions' => $transactions->latest()->paginate(20)
+            'transactions' => $transactions->orderBy('created_at', 'desc')->orderBy('id', 'desc')->paginate(20)
         ]);
     }
 

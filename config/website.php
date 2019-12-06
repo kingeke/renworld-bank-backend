@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'bank_name' => 'RenWorld Bank',
     'account_types' => [
         'Savings',
         'Current'

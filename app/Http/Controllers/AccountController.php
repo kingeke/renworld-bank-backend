@@ -179,22 +179,19 @@ class AccountController extends Controller
 
         $to_account = Account::where('account_number', $request->to_account)->orWhere('account_number', $request->account_number)->first();
 
-        if ($to_account) {
-            $narration = "Transfer to " . $to_account->user->name . " with account number $to_account->account_number" . $request->narration;
-
-            $to_account->user->credit_account($to_account, [
-                'narration' => "Transfer from $user->name with account number $request->from_account" . $request->narration,
-                'amount' => $amount
-            ]);
-        } else {
-            $narration = "Transfer To $request->account_name with account number $request->account_number using $request->bank_name" . $request->narration;
-        }
+        $narration = "Transfer to " . ($to_account->user->name ?? $request->account_name) . " with account number " . ($to_account->account_number ?? $request->account_number) . " who uses " . ($request->bank_name ?? config('website.bank_name')) . $request->narration;
 
         $user->debit_account($from_account, [
             'narration' => $narration,
             'amount' => $amount
         ]);
 
+        if ($to_account) {
+            $to_account->user->credit_account($to_account, [
+                'narration' => "Transfer from $user->name with account number $request->from_account" . $request->narration,
+                'amount' => $amount
+            ]);
+        }
 
         return $this->responseCodes('success', 'Transfer successful');
     }

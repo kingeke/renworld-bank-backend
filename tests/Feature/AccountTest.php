@@ -340,10 +340,7 @@ class AccountTest extends TestCase
     public function transfer_data($user)
     {
         return [
-            'from_account' => factory(Account::class)->create([
-                'user_id' => $user->id,
-                'balance' => 30000
-            ])->account_number,
+            'from_account' => factory(Account::class)->create(['user_id' => $user->id])->account_number,
             'to_account' => factory(Account::class)->create(['user_id' => $user->id])->account_number,
             'amount' => 5000,
             'password' => 'password'
