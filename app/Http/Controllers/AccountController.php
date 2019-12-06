@@ -183,7 +183,7 @@ class AccountController extends Controller
             $narration = "Transfer to " . $to_account->user->name . " with account number $to_account->account_number" . $request->narration;
 
             $to_account->user->credit_account($to_account, [
-                'narration' => "Transfer from $user->name with account number $request->from_account",
+                'narration' => "Transfer from $user->name with account number $request->from_account" . $request->narration,
                 'amount' => $amount
             ]);
         } else {
