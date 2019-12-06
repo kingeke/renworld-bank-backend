@@ -119,7 +119,7 @@ class AccountController extends Controller
         }
 
         $this->user->credit_account($account, [
-            'narration' => "TRF// Bonus of " . $this->formatNumber($request->amount) . " from RenWorld Bank",
+            'narration' => "TRF// Bonus of " . $this->formatNumber($request->amount) . " from " . config('website.bank_name'),
             'amount' => $request->amount
         ]);
 
