@@ -59,6 +59,7 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "push": "git push origin master && git push heroku master"
     }
 }
